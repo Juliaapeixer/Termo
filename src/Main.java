@@ -9,8 +9,6 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.*;
 
-import java.util.*;
-
 public class Main {
     public static void main(String[] args) throws IOException {
 
@@ -26,13 +24,13 @@ public class Main {
 
         FileReader fr = new FileReader(arquivo);
         BufferedReader br = new BufferedReader(fr);
-        Map<Integer, Boolean> verificacao = new HashMap<Integer, Boolean>();
+        Map<Integer, Boolean> verificacao;
 
         String userWord = null;
         Boolean acerto = true;
         int caracteres = 5;
         int tentativas = 7;
-        Boolean resultado = null;
+        Boolean resultado;
 
         filterFacade.filter(br, list, caracteres);
         String aleatoria = wordFacade.getRandomWord(rand, list);
@@ -43,10 +41,10 @@ public class Main {
         final String ANSI_YELLOW = "\u001B[33m";
         final String ANSI_RESET = "\u001B[0m";
 
-        colorFacade.setColor(ANSI_GREEN);     // -> Verde
-        colorFacade.setColor(ANSI_YELLOW);    // -> Amarelo
-        colorFacade.setColor(ANSI_RED);       // -> Verde
-        colorFacade.setColor(ANSI_RESET);     // -> Encerra as cores
+        colorFacade.setColor(ANSI_GREEN);
+        colorFacade.setColor(ANSI_YELLOW);
+        colorFacade.setColor(ANSI_RED);
+        colorFacade.setColor(ANSI_RESET);
 
         viewFacade.start();
 
@@ -75,7 +73,7 @@ public class Main {
 
             viewFacade.resultado(resultadoLista, userWord, colorFacade.getColors());
 
-            if (resultadoBoolean || tentativas == 0) {
+            if (Boolean.TRUE.equals(resultadoBoolean) || tentativas == 0) {
                 viewFacade.end(resultado);
                 break;
             } else {
